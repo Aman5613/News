@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import instance from "./API/axiosConfig";
 import Nav from "./Nav/Nav";
+import Hero from "./Components/Hero";
+import Health from "./Components/Health";
 
 const App = () => {
   const news = async () => {
@@ -22,6 +24,8 @@ const App = () => {
     <div>
       <Nav />
       <hr />
+      <Hero />
+      <Health />
     </div>
   );
 };
