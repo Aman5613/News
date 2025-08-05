@@ -3,6 +3,7 @@ import instance from "./API/axiosConfig";
 import Nav from "./Nav/Nav";
 import Hero from "./Components/Hero";
 import Health from "./Components/Health";
+import TopStories from "./Components/TopStories";
 
 const App = () => {
   const news = async () => {
@@ -26,6 +27,7 @@ const App = () => {
       <hr />
       <Hero />
       <Health />
+      <TopStories/>
     </div>
   );
 };
