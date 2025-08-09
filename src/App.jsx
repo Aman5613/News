@@ -1,8 +1,7 @@
 import Nav from "./Nav/Nav";
-import MainRoutes from "./API/Routes/MainRoutes";
+import MainRoutes from "./Routes/MainRoutes"
 
 const App = () => {
-
   return (
     <div>
       <Nav />

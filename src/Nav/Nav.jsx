@@ -12,7 +12,7 @@ const Nav = () => {
     };
   return (
 
-      <nav className="py-3 px-3">
+      <nav className="py-3 px-3 sticky top-0 bg-white">
         <div className="flex justify-between items-center">
 
           <div onClick={() => navigate("/")} className="logo text-3xl font-extrabold uppercase">Nexus <span className='text-red-800'>news</span></div>

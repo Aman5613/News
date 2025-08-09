@@ -9,7 +9,7 @@ import Hero from "./Hero";
 
 const Home = () => {
   return (
-    <div className="px-3 py-9">
+    <div className="px-3 py-7">
       {/* <div className="relative">
         <div className="absolute w-full h-60">
           <img
@@ -74,14 +74,14 @@ const Home = () => {
           </p>
         </div>
       </div> */}
-      {/* <Hero /> */}
-      {/* <Business /> */}
-      {/* <Health/> */}
-      {/* <World /> */}
-      {/* <Politics />
+      <Hero />
+      <India />
+      <World />
+      <Politics />
       <Science />
-      <India /> */}
-      {/* <Sports /> */}
+      <Health/>
+      <Business />
+      <Sports />
     </div>
   );
 };

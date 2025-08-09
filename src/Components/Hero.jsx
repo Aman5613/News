@@ -8,10 +8,10 @@ const Hero = () => {
     try {
       const res = await instance.get("", {
         params: {
-          q: "top-indian-news",
+          q: "latest",
         },
       });
-      setArticles(res.data.articles?.slice(0, 15) || []);
+      setArticles(res.data.articles?.slice(0, 18) || []);
     } catch (error) {
       console.error("Error fetching hero articles:", error);
     }
@@ -22,23 +22,21 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="px-3 py-9 flex flex-col gap-5">
+    <div className="px-3 py-9 flex flex-col gap-5 md:flex-row md:flex-wrap">
       {articles.map((article, index) => (
-        <div className="flex flex-col gap-7" key={index}>
+        <div className="flex flex-col gap-7 md:w-[48%] lg:w-[30%] " key={index}>
           <div className="flex flex-col">
             <div className="w-full h-fit mb-5 ">
               <img
-                className="w-full h-full object-contain"
+                className="w-full  object-contain"
                 src={article.urlToImage}
                 alt=""
               />
             </div>
-            <p className="uppercase text-red-800 font-semibold text-sm">
+            {/* <p className="uppercase text-red-800 font-semibold text-sm">
               hero
-            </p>
-            <h1 className="font-bold tracking-wide text-md">
-              {article.title}
-            </h1>
+            </p> */}
+            <h1 className="font-bold tracking-wide text-md">{article.title}</h1>
             <p className="text-sm opacity-70">{article.description}</p>
             <p className="text-sm opacity-70">{article.publishedAt}</p>
             <button

@@ -34,9 +34,9 @@ const ScienceFP = () => {
   };
 
   return (
-    <div className="px-3 py-9 flex flex-col gap-5">
+    <div className="px-3 py-9 flex flex-col gap-5 md:flex-row md:flex-wrap">
       {articles.map((article, index) => (
-        <div className="flex flex-col gap-7" key={index}>
+        <div className="flex flex-col gap-7 md:w-[48%] lg:w-[30%]" key={index}>
           <div className="flex flex-col">
             <div className="w-full h-90 mb-5 ">
               <img
