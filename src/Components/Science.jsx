@@ -11,7 +11,7 @@ const Science = () => {
     try {
       const res = await instance.get("", {
         params: {
-          q: "science",
+          q: "science-techology",
         },
       });
       setArticles(res.data.articles?.slice(0, 18) || []);
@@ -39,7 +39,7 @@ const Science = () => {
           View All <FaArrowRight />
         </p>
       </div>
-      <div className="flex flex-col gap-7 md:flex-row flex-wrap">
+      <div className="flex flex-col justify-between gap-7 md:flex-row flex-wrap">
         {articles.map((article, index) => (
           <div className="flex flex-col  md:w-[48%] lg:w-[30%]" key={index}>
             <div className="w-full h-fit mb-5 ">

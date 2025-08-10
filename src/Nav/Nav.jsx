@@ -12,25 +12,28 @@ const Nav = () => {
     };
   return (
 
-      <nav className="py-3 px-3 sticky top-0 bg-white">
+      <nav className="py-3 px-6 sticky top-0 bg-white">
         <div className="flex justify-between items-center">
 
-          <div onClick={() => navigate("/")} className="logo text-3xl font-extrabold uppercase">Nexus <span className='text-red-800'>news</span></div>
+          <div onClick={() => navigate("/")} className="logo text-3xl font-extrabold uppercase cursor-pointer">Nexus <span className='text-red-800'>news</span></div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex gap-6 text-gray-700 font-medium">
-            
+          <div className="hidden md:flex gap-6 text-gray-700 font-medium bg-white">
+            <NavLink to="/india" >India</NavLink>
+            <NavLink to="/world" >World</NavLink>
+            <NavLink to="/politics" >Politics</NavLink>
+            <NavLink to="/science" >Science</NavLink>
+            <NavLink to="/health" >Health</NavLink>
+            <NavLink to="/business" >Business</NavLink>
+            <NavLink to="/sports" >Sports</NavLink>
           </div>
 
-          {/* Mobile Menu Icon */}
           <button onClick={toggleMenu} className="md:hidden text-3xl border text-red-800">
             {menuOpen ? <BiX  /> : <BiMenu  />}
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="md:hidden mt-2 space-y-2 text-gray-500 font-medium flex flex-col pl-5 gap-3 py-4">
+          <div className="md:hidden mt-2 space-y-2 text-gray-500 font-medium flex flex-col pl-5 gap-3 py-4 bg-white">
             <NavLink to="/health" >Health</NavLink>
             <NavLink to="/politics" >Politics</NavLink>
             <NavLink to="/sports" >Sports</NavLink>
@@ -38,8 +41,6 @@ const Nav = () => {
             <NavLink to="/india" >India</NavLink>
             <NavLink to="/science" >Science</NavLink>
             <NavLink to="/world" >World</NavLink>
-            <NavLink to="/" >About</NavLink>
-            <NavLink to="/" >Contact</NavLink>
           </div>
         )}
       </nav>

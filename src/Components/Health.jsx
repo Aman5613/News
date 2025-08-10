@@ -39,7 +39,7 @@ const Health = () => {
           View All <FaArrowRight />
         </p>
       </div>
-      <div className="flex flex-col gap-7 md:flex-row flex-wrap">
+      <div className="flex flex-col justify-between gap-7 md:flex-row flex-wrap">
         {articles.map((article, index) => (
           <div className="flex flex-col  md:w-[48%] lg:w-[30%]" key={index}>
             <div className="w-full h-fit mb-5 ">
