@@ -14,7 +14,7 @@ const Politics = () => {
           q: "politics",
         },
       });
-      setArticles(res.data.articles?.slice(0, 18) || []);
+      setArticles(res.data.results);
     } catch (error) {
       console.error("Error fetching politics articles:", error);
     }
@@ -28,7 +28,7 @@ const Politics = () => {
     <div className="px-3 py-9 flex flex-col gap-5 ">
       <div className="flex justify-between items-center">
         <div className="vline w-[3px] md:w-[10px] rounded-full h-8 bg-red-800"></div>
-        <p className="font-bold md:text-4xl">politics</p>
+        <p className="font-bold md:text-4xl">Politics</p>
         <div className="hline w-[50%] h-[2px] md:w-[60%] md:h-[4px] rounded-full bg-black opacity-80"></div>
         <p
           onClick={() => {
@@ -45,7 +45,7 @@ const Politics = () => {
             <div className="w-full h-fit mb-5 ">
               <img
                 className="w-full h-full object-contain"
-                src={article.urlToImage}
+                src={article.image_url}
                 alt=""
               />
             </div>
@@ -54,10 +54,10 @@ const Politics = () => {
             </p>
             <h1 className="font-bold tracking-wide text-md">{article.title}</h1>
             <p className="text-sm opacity-70">{article.description}</p>
-            <p className="text-sm opacity-70">{article.publishedAt}</p>
+            <p className="text-sm opacity-70">{article.pubDate}</p>
             <button
               className="mt-2 px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition"
-              onClick={() => window.open(article.url, "_blank")}
+              onClick={() => window.open(article.link, "_blank")}
             >
               Read Full Article
             </button>

@@ -14,7 +14,7 @@ const Sports = () => {
           q: "sports",
         },
       });
-      setArticles(res.data.articles?.slice(0, 18) || []);
+      setArticles(res.data.results);
     } catch (error) {
       console.error("Error fetching sports articles:", error);
     }
@@ -45,7 +45,7 @@ const Sports = () => {
             <div className="w-full h-fit mb-5 ">
               <img
                 className="w-full h-full object-contain"
-                src={article.urlToImage}
+                src={article.image_url}
                 alt=""
               />
             </div>
@@ -56,10 +56,10 @@ const Sports = () => {
               {article.title}
             </h1>
             <p className="text-sm opacity-70">{article.description}</p>
-            <p className="text-sm opacity-70">{article.publishedAt}</p>
+            <p className="text-sm opacity-70">{article.pubDate}</p>
             <button
               className="mt-2 px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition"
-              onClick={() => window.open(article.url, "_blank")}
+              onClick={() => window.open(article.link, "_blank")}
             >
               Read Full Article
             </button>

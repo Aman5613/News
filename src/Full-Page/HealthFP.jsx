@@ -3,34 +3,32 @@ import { useEffect, useState } from "react";
 
 const HealthFP = () => {
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [nextPage, setnextPage] = useState();
 
-  const healthAPI = async (pageNum = 1) => {
+  const healthAPI = async (nextPage) => {
     try {
       const res = await instance.get("", {
         params: {
           q: "health",
-          page: pageNum,
+          ...(nextPage && { page: nextPage }),
         },
       });
-      const newArticles = res.data.articles || [];
-      setArticles((prev) =>
-        pageNum === 1 ? newArticles : [...prev, ...newArticles]
-      );
-      setHasMore(newArticles.length > 0);
+
+      setnextPage(res.data.nextPage);
+      const newArticles = res.data.results || [];
+      setArticles((prevArticles) => [...prevArticles, ...newArticles]);
     } catch (error) {
       console.error("Error fetching health articles:", error);
-      setHasMore(false);
     }
   };
 
   useEffect(() => {
-    healthAPI(page);
-  }, [page]);
+    healthAPI(nextPage);
+  }, []);
 
   const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
+
+    healthAPI(nextPage);
   };
 
   return (
@@ -41,7 +39,7 @@ const HealthFP = () => {
             <div className="w-full h-fit mb-5 ">
               <img
                 className="w-full h-full object-contain"
-                src={article.urlToImage}
+                src={article.image_url}
                 alt="image"
               />
             </div>
@@ -49,25 +47,27 @@ const HealthFP = () => {
               health
             </p>
             <h1 className="font-bold tracking-wide text-md">{article.title}</h1>
-            <p className="text-sm opacity-70">{article.description}</p>
-            <p className="text-sm opacity-70">{article.publishedAt}</p>
+            <p className="text-sm opacity-70 line-clamp-6">
+              {article.description}
+            </p>
+            <p className="text-sm opacity-70">{article.pubDate}</p>
             <button
               className="mt-2 px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition"
-              onClick={() => window.open(article.url, "_blank")}
+              onClick={() => window.open(article.link, "_blank")}
             >
               Read Full Article
             </button>
           </div>
         </div>
       ))}
-      {hasMore && (
+      {
         <button
-          className="mt-4 px-4 py-2 bg-red-800 text-white rounded"
+          className="mt-4 px-4 py-2 h-10 cursor-pointer bg-red-800 text-white rounded"
           onClick={handleLoadMore}
         >
           Load More
         </button>
-      )}
+      }
     </div>
   );
 };
