@@ -53,7 +53,7 @@ const India = () => {
               india
             </p>
             <h1 className="font-bold tracking-wide text-md">{article.title}</h1>
-            <p className="text-sm opacity-70">{article.description}</p>
+            <p className="text-sm opacity-70 line-clamp-6">{article.description}</p>
             <p className="text-sm opacity-70">{article.pubDate}</p>
             <button
               className="mt-2 px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition"
